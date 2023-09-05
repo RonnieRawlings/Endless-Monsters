@@ -19,4 +19,38 @@ public static class StaticManagement
     public static GameObject playerRef, enemyRef;
 
     #endregion
+
+    #region Enemy Resource Loads
+
+    // Holds loaded enemy variants, different level arrays.
+    public static GameObject[] lowLevelEnemies, midLevelEnemies, highLevelEnemies;
+
+    #endregion
+
+    /// <summary> constructor <c>StaticManagement</c> Fills variables before first update. </summary>
+    static StaticManagement()
+    {
+        lowLevelEnemies = Resources.LoadAll<GameObject>("Prefabs/Enemies/Low Variants");
+    }
+
+    /// <summary> method <c>ChangeEnemies</c> Updates the current loaded enemy + changes the reference. </summary>
+    public static void ChangeEnemies()
+    {
+        // Get a random index from lowLevelEnemies array
+        int randomIndex = UnityEngine.Random.Range(0, lowLevelEnemies.Length);
+
+        // Get the position, rotation, and parent of the current enemy
+        Vector3 position = enemyRef.transform.position;
+        Quaternion rotation = enemyRef.transform.rotation;
+        Transform parent = enemyRef.transform.parent;
+
+        // Destroy the current enemy
+        GameObject.Destroy(enemyRef);
+
+        // Instantiate a new low level enemy at the position and rotation of the old enemy
+        enemyRef = GameObject.Instantiate(lowLevelEnemies[randomIndex], position, rotation);
+
+        // Set the parent of the new enemy to be the same as the old enemy
+        enemyRef.transform.SetParent(parent);
+    }
 }
