@@ -117,6 +117,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9195555254894432208, guid: aee56308b2e59344aa8e34666be13976, type: 3}
+      propertyPath: MAX_ENEMY_HP
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195555254894432208, guid: aee56308b2e59344aa8e34666be13976, type: 3}
       propertyPath: enemyBasicDamage
       value: 1
       objectReference: {fileID: 0}

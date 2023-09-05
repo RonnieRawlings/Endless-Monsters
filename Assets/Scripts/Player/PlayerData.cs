@@ -6,5 +6,5 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public float playerHeath, playerBasicDamage;
+    public float playerHealth, playerBasicDamage, MAX_PLAYER_HP;
 }
