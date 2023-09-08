@@ -1559,6 +1559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1002818058}
   - component: {fileID: 1002818059}
+  - component: {fileID: 1002818060}
   m_Layer: 5
   m_Name: MainGame
   m_TagString: Untagged
@@ -1604,6 +1605,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alreadyCalled: 0
+--- !u!114 &1002818060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002818057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39dc05d85789f8748b3712e2acc53f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1051452108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3783,9 +3796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d148a958795611c4191696427b27cb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 400
+  playerHealth: 500
   playerBasicDamage: 5
-  MAX_PLAYER_HP: 1000
+  MAX_PLAYER_HP: 500
+  attackTime: 2
 --- !u!1 &1779038810
 GameObject:
   m_ObjectHideFlags: 0
