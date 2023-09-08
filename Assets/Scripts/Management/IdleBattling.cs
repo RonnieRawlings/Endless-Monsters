@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class IdleBattling : MonoBehaviour
@@ -49,19 +50,27 @@ public class IdleBattling : MonoBehaviour
             }
 
             // Check if either player or enemy health is 0 or below
-            if (StaticManagement.playerRef.GetComponent<PlayerData>().playerHealth <= 0 || 
-                    StaticManagement.enemyRef.GetComponent<EnemyData>().enemyHealth <= 0)
+            if (StaticManagement.enemyRef.GetComponent<EnemyData>().enemyHealth <= 0)
             {
-                // Restart routine
-                StopCoroutine(RunIdleBattle());
-                StartCoroutine(RunIdleBattle());
-                yield break;
+                // Exit loop on enemy death.
+                break;
             }
 
             // Increment attack timers
             playerAttackTimer += Time.deltaTime;
             enemyAttackTimer += Time.deltaTime;
         }
+
+        // Find players's manaPool UI element.
+        TextMeshProUGUI manaPoolText = StaticManagement.playerOptionsRef.transform.Find("ManaPool").GetComponentInChildren<TextMeshProUGUI>();
+
+        // Increase player's mana from enemy drop.
+        int currentMana = int.Parse(manaPoolText.text.Split("Mana")[0]);
+        manaPoolText.text = (currentMana + StaticManagement.enemyRef.GetComponent<EnemyData>().manaDrop).ToString() + " Mana";
+
+        // Wait for enemy spawn + restart coroutine.
+        yield return new WaitForSeconds(0.6f);
+        StartCoroutine(RunIdleBattle());
     }
 
     // Update is called once per frame

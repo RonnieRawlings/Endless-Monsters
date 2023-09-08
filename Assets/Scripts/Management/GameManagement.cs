@@ -8,7 +8,6 @@ public class GameManagement : MonoBehaviour
 {
     public bool alreadyCalled = false;
 
-
     /// <summary> method <c>SetPlayerAndEnemyRefs</c> enables the player/enemy objs & sets the static refs. </summary>
     public void SetPlayerAndEnemyRefs()
     {
@@ -19,6 +18,7 @@ public class GameManagement : MonoBehaviour
         // Sets refs in static management, easier access.
         StaticManagement.playerRef = transform.Find("Player").gameObject;
         StaticManagement.enemyRef = transform.Find("BaseEnemy").gameObject;
+        StaticManagement.playerOptionsRef = transform.parent.Find("PlayerUI").Find("PlayerOptions").gameObject;
 
         // Enable PlayerUI Panel.
         transform.parent.Find("PlayerUI").gameObject.SetActive(true);

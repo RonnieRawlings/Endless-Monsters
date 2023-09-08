@@ -18,6 +18,9 @@ public static class StaticManagement
     // Refs to each sprite gameObj position.
     public static GameObject playerRef, enemyRef;
 
+    // Player options ref.
+    public static GameObject playerOptionsRef;
+
     #endregion
 
     #region Enemy Resource Loads
@@ -34,8 +37,11 @@ public static class StaticManagement
     }
 
     /// <summary> method <c>ChangeEnemies</c> Updates the current loaded enemy + changes the reference. </summary>
-    public static void ChangeEnemies()
+    public static IEnumerator ChangeEnemies(float waitTime)
     {
+        // Wait for 1.5 seconds before executing the code
+        yield return new WaitForSeconds(waitTime);
+
         // Get a random index from lowLevelEnemies array
         int randomIndex = UnityEngine.Random.Range(0, lowLevelEnemies.Length);
 
