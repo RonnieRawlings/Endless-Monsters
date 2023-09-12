@@ -10,6 +10,19 @@ public class BaseMagic : MonoBehaviour
     // Basic magic values.
     [SerializeField] private int magicDamage, magicCost;
 
+    // Spell cooldown.
+    [SerializeField] private float spellCooldown;
+
+    #region Variable Properties
+
+    /// <summary> property <c>SpellCooldown</c> Always get access to spellCooldown var in other scripts. </summary>
+    public float SpellCooldown
+    {
+        get { return spellCooldown; }
+    }
+
+    #endregion
+
     /// <summary> method <c>UseSpell</c> allows player to attack with the clicked spell, applies set damage at mana cost. </summary>
     public void UseSpell()
     {
