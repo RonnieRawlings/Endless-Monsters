@@ -16,8 +16,12 @@ public class UpdateHealth : MonoBehaviour
         PlayerData playerHP = StaticManagement.playerRef.GetComponent<PlayerData>();
         GameObject playerHpVisual = transform.Find("PlayerHealth").gameObject;
 
+        // Prevents negative HP from being displayed.
+        float currentHp = 0;
+        if (playerHP.playerHealth > 0) { currentHp = playerHP.playerHealth; }
+
         // Sets text visual to current HP.
-        playerHpVisual.transform.GetComponentInChildren<TextMeshProUGUI>().text = playerHP.playerHealth.ToString() + 
+        playerHpVisual.transform.GetComponentInChildren<TextMeshProUGUI>().text = currentHp.ToString() + 
             " / " + playerHP.MAX_PLAYER_HP;
 
         // Changes slider HP value.
@@ -33,14 +37,21 @@ public class UpdateHealth : MonoBehaviour
         EnemyData enemyHP = StaticManagement.enemyRef.GetComponent<EnemyData>();
         GameObject enemyHpVisual = transform.Find("EnemyHealth").gameObject;
 
+        // Prevents negative HP from being displayed.
+        float currentHp = 0;
+        if (enemyHP.enemyHealth > 0) { currentHp = enemyHP.enemyHealth; }
+
         // Sets text visual to current HP.
-        enemyHpVisual.transform.GetComponentInChildren<TextMeshProUGUI>().text = enemyHP.enemyHealth.ToString() +
+        enemyHpVisual.transform.GetComponentInChildren<TextMeshProUGUI>().text = currentHp.ToString() +
             " / " + enemyHP.MAX_ENEMY_HP;
 
         // Changes slider HP value.
         GameObject hpSlider = enemyHpVisual.transform.Find("Slider").gameObject;
-        hpSlider.GetComponent<Slider>().maxValue = enemyHP.MAX_ENEMY_HP;
-        hpSlider.GetComponent<Slider>().value = enemyHP.enemyHealth;
+        Slider sliderComponent = hpSlider.GetComponent<Slider>();
+        sliderComponent.maxValue = enemyHP.MAX_ENEMY_HP;
+
+        // Ensure that enemyHealth is not less than 0
+        sliderComponent.value = Mathf.Max(enemyHP.enemyHealth, 0);
     }
 
     // Update is called once per frame
