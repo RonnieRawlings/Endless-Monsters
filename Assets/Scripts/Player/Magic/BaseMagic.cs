@@ -38,5 +38,8 @@ public class BaseMagic : MonoBehaviour
 
         // Remove mana.      
         manaPoolText.text = (currentMana - magicCost).ToString() + " Mana";
+
+        // Visually display damage.
+        DamageNumbers.DisplayDamageNumbers(StaticManagement.enemyRef.transform, magicDamage);
     }
 }

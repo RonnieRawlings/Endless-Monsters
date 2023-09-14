@@ -2512,6 +2512,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9195555254894432208, guid: aee56308b2e59344aa8e34666be13976, type: 3}
+      propertyPath: enemyHealth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195555254894432208, guid: aee56308b2e59344aa8e34666be13976, type: 3}
+      propertyPath: MAX_ENEMY_HP
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

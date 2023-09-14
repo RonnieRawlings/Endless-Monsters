@@ -39,7 +39,7 @@ public static class StaticManagement
     /// <summary> method <c>ChangeEnemies</c> Updates the current loaded enemy + changes the reference. </summary>
     public static IEnumerator ChangeEnemies(float waitTime)
     {
-        // Wait for 1.5 seconds before executing the code
+        // Wait specified time before changing enemies.
         yield return new WaitForSeconds(waitTime);
 
         // Get a random index from lowLevelEnemies array

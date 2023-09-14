@@ -36,6 +36,10 @@ public class IdleBattling : MonoBehaviour
                 StaticManagement.enemyRef.GetComponent<EnemyData>().enemyHealth -= 
                     StaticManagement.playerRef.GetComponent<PlayerData>().playerBasicDamage;
 
+                // Visually display attack.
+                DamageNumbers.DisplayDamageNumbers(StaticManagement.enemyRef.transform, 
+                    (int)StaticManagement.playerRef.GetComponent<PlayerData>().playerBasicDamage);
+
                 // Resets player attack timer.
                 playerAttackTimer = 0;
             }
@@ -44,6 +48,10 @@ public class IdleBattling : MonoBehaviour
                 // Remove health from player
                 StaticManagement.playerRef.GetComponent<PlayerData>().playerHealth -= 
                     StaticManagement.enemyRef.GetComponent<EnemyData>().enemyBasicDamage;
+
+                // Visually display attack.
+                DamageNumbers.DisplayDamageNumbers(StaticManagement.playerRef.transform,
+                    (int)StaticManagement.enemyRef.GetComponent<EnemyData>().enemyBasicDamage);
 
                 // Resets enemy attack timer.
                 enemyAttackTimer = 0;
