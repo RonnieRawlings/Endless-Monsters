@@ -1,26 +1,33 @@
 // Author - Ronnie Rawlings.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class SpellCooldown : MonoBehaviour
 {
-    /// <summary> method <c>StartCooldown</c> Starts the coroutine used to prevent repeated spell uses. </summary>
     public void StartCooldown(BaseMagic spellData)
     {
         StartCoroutine(SpellCooldowns(spellData));
     }
 
-    /// <summary> interface <c>SpellCooldowns</c> Disables specific spell until cooldown has passed, prevents repeated used. </summary>
     public IEnumerator SpellCooldowns(BaseMagic spellData)
     {
         // Disables use of spell.
         spellData.gameObject.GetComponentInChildren<Button>().interactable = false;
 
-        // Spell cooldown.
-        yield return new WaitForSeconds(spellData.SpellCooldown);
+        // Finds silder component.
+        Slider cooldownSlider = spellData.GetComponentInChildren<Slider>();
+
+        // Initialize the slider values
+        cooldownSlider.maxValue = spellData.SpellCooldown;
+        cooldownSlider.value = spellData.SpellCooldown;
+
+        while (cooldownSlider.value > 0)
+        {
+            cooldownSlider.value -= Time.deltaTime;
+            yield return null; // wait for the next frame
+        }
 
         // Re-enables use of spell.
         spellData.gameObject.GetComponentInChildren<Button>().interactable = true;
