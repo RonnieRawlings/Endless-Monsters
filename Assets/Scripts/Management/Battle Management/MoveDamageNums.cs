@@ -7,8 +7,8 @@ using UnityEngine;
 public class MoveDamageNums : MonoBehaviour
 {
     // Animation duration + final position.
-    public float duration = 1.0f;
-    public Vector3 offset = new Vector3(-130, 80, 0);
+    public float duration = 0.75f;
+    public Vector3 finalPos = new Vector3(-50, 70, 0);
 
     // Objs start position & exact time before routine begins.
     private Vector3 startPosition;
@@ -24,7 +24,7 @@ public class MoveDamageNums : MonoBehaviour
             float t = (Time.time - startTime) / duration;
 
             // Moves obj, t * t = quadratic curve.
-            transform.position = Vector3.Lerp(startPosition, startPosition + offset, t * t);
+            transform.position = Vector3.Lerp(startPosition, startPosition + finalPos, t * t);
 
             // Satisfies return req, waits no time.
             yield return null;

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class DamageNumbers
 {
@@ -23,5 +24,19 @@ public static class DamageNumbers
 
         // Set damage text.
         damageNumber.text = "-" + damageNum.ToString();
+
+        // Set font color to red.
+        damageNumber.color = Color.red;
+
+        // Create a new material based on the current font material
+        Material newMat = new Material(damageNumber.fontMaterial);
+
+        // Enable and set outline on the new material
+        newMat.EnableKeyword("OUTLINE_ON");
+        newMat.SetColor("_OutlineColor", Color.black);
+        newMat.SetFloat("_OutlineWidth", 0.2f);
+
+        // Assign the new material to the TextMeshPro component
+        damageNumber.fontMaterial = newMat;
     }
 }
