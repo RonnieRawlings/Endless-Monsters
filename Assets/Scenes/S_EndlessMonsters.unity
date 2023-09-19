@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotOpen: 1
   petName: 
-  petDamage: 
+  petDamage: 0
 --- !u!1 &494813576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,7 +1649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotOpen: 1
   petName: 
-  petDamage: 
+  petDamage: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,7 +2546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9195555254894432208, guid: aee56308b2e59344aa8e34666be13976, type: 3}
       propertyPath: enemyHealth
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9195555254894432208, guid: aee56308b2e59344aa8e34666be13976, type: 3}
       propertyPath: MAX_ENEMY_HP
@@ -3870,7 +3870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotOpen: 1
   petName: 
-  petDamage: 
+  petDamage: 0
 --- !u!1 &1272136656
 GameObject:
   m_ObjectHideFlags: 0

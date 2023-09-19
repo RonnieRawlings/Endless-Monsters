@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class EnemyData : MonoBehaviour
 {
+    // Multiple call prevention.
+    public bool changeCalled;
+
     // Basic battling variables.
     public float enemyHealth, enemyBasicDamage, MAX_ENEMY_HP;
 
@@ -17,9 +20,10 @@ public class EnemyData : MonoBehaviour
 
     private void OnEnable()
     {
-        if (gameObject.name == "BaseEnemy")
+        if (gameObject.name == "BaseEnemy" && !changeCalled)
         {
-            StartCoroutine(StaticManagement.ChangeEnemies(0f));
+            StartCoroutine(StaticManagement.ChangeEnemies(0.01f));
+            changeCalled = true;
         }        
     }
 
@@ -27,6 +31,10 @@ public class EnemyData : MonoBehaviour
     void Update()
     {
         // If dead, spawn new enemy.
-        if (enemyHealth <= 0) { StartCoroutine(StaticManagement.ChangeEnemies(0.5f)); }
+        if (enemyHealth <= 0 && !changeCalled) 
+        { 
+            StartCoroutine(StaticManagement.ChangeEnemies(0.5f));
+            changeCalled = true;
+        }
     }
 }

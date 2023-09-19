@@ -39,11 +39,14 @@ public static class StaticManagement
         lowLevelEnemies = Resources.LoadAll<GameObject>("Prefabs/Enemies/Low Variants");
     }
 
-    /// <summary> method <c>ChangeEnemies</c> Updates the current loaded enemy + changes the reference. </summary>
+    /// <summary> static method <c>ChangeEnemies</c> Updates the current loaded enemy + changes the reference. </summary>
     public static IEnumerator ChangeEnemies(float waitTime)
-    {
+    {             
         // Wait specified time before changing enemies.
         yield return new WaitForSeconds(waitTime);
+
+        // Captures enemy is an open slot is available.
+        if (enemyRef.name != "BaseEnemy") { CheckForOpenPetSlot(); }
 
         // Get a random index from lowLevelEnemies array
         int randomIndex = UnityEngine.Random.Range(0, lowLevelEnemies.Length);
@@ -61,5 +64,29 @@ public static class StaticManagement
 
         // Set the parent of the new enemy to be the same as the old enemy
         enemyRef.transform.SetParent(parent);
+    }
+
+    /// <summary> static method <c>CheckForOpenPetSlot</c> finds the first open pet slot, fills it with current enemy data. </summary>
+    public static void CheckForOpenPetSlot()
+    {
+        // Searches all slot refs for an open on.
+        PetSlotData openSlot = null;
+        foreach (PetSlotData petSlot in petSlotsRef)
+        {
+            // Sets openSlot, ends loop.
+            if (petSlot.slotOpen) 
+            {
+                openSlot = petSlot;
+                break;
+            }
+        }
+
+        // Prevents ref error.
+        if (openSlot == null) { return; }
+
+        // Sets open pet slot data.
+        EnemyData enemyData = enemyRef.GetComponent<EnemyData>();
+        openSlot.SetData(enemyData.gameObject.GetComponent<UnityEngine.UI.Image>().sprite, enemyData.gameObject.GetComponent<UnityEngine.UI.Image>().color, 
+            enemyData.gameObject.name, (int)enemyData.enemyBasicDamage);
     }
 }
