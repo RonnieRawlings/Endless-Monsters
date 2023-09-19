@@ -21,6 +21,9 @@ public static class StaticManagement
     // Player options ref.
     public static GameObject playerOptionsRef;
 
+    // Pet collection slots ref.
+    public static PetSlotData[] petSlotsRef;
+
     #endregion
 
     #region Enemy Resource Loads

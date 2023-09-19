@@ -2,14 +2,15 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManagement : MonoBehaviour
 {
     public bool alreadyCalled = false;
 
-    /// <summary> method <c>SetPlayerAndEnemyRefs</c> enables the player/enemy objs & sets the static refs. </summary>
-    public void SetPlayerAndEnemyRefs()
+    /// <summary> method <c>SetStaticRefs</c> enables the player/enemy objs & sets the static refs. </summary>
+    public void SetStaticRefs()
     {
         // Enables player/enemy sprites
         transform.Find("Player").gameObject.SetActive(true);
@@ -22,6 +23,17 @@ public class GameManagement : MonoBehaviour
 
         // Enable PlayerUI Panel.
         transform.parent.Find("PlayerUI").gameObject.SetActive(true);
+
+        // Sets reference to all pet slots.
+        GameObject petCollection = transform.parent.Find("PlayerUI").Find("PetCollection").gameObject;
+        List<PetSlotData> slotData = new List<PetSlotData>();
+        foreach (Transform petShadow in petCollection.transform)
+        {
+            slotData.Add(petShadow.GetComponent<PetSlotData>());
+        }
+
+        // Convert list, assign to array ref.
+        StaticManagement.petSlotsRef = slotData.ToArray();
     }
 
     // Update is called once per frame
@@ -30,7 +42,7 @@ public class GameManagement : MonoBehaviour
         // Enables player/enemy sprites on Game Start.
         if (StaticManagement.newGameBegun && !alreadyCalled)
         {
-            SetPlayerAndEnemyRefs();
+            SetStaticRefs();
             alreadyCalled = true;            
         }     
     }

@@ -1422,6 +1422,7 @@ GameObject:
   - component: {fileID: 478108038}
   - component: {fileID: 478108040}
   - component: {fileID: 478108039}
+  - component: {fileID: 478108041}
   m_Layer: 5
   m_Name: PetShadow
   m_TagString: Untagged
@@ -1487,6 +1488,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478108037}
   m_CullTransparentMesh: 1
+--- !u!114 &478108041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478108037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ff060302a29b64da8638448803d753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotOpen: 1
+  petName: 
+  petDamage: 
 --- !u!1 &494813576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1569,7 @@ GameObject:
   - component: {fileID: 502337325}
   - component: {fileID: 502337327}
   - component: {fileID: 502337326}
+  - component: {fileID: 502337328}
   m_Layer: 5
   m_Name: PetShadow
   m_TagString: Untagged
@@ -1618,6 +1635,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502337324}
   m_CullTransparentMesh: 1
+--- !u!114 &502337328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502337324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ff060302a29b64da8638448803d753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotOpen: 1
+  petName: 
+  petDamage: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,6 +3790,7 @@ GameObject:
   - component: {fileID: 1262085320}
   - component: {fileID: 1262085322}
   - component: {fileID: 1262085321}
+  - component: {fileID: 1262085323}
   m_Layer: 5
   m_Name: PetShadow
   m_TagString: Untagged
@@ -3823,6 +3856,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262085319}
   m_CullTransparentMesh: 1
+--- !u!114 &1262085323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262085319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ff060302a29b64da8638448803d753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotOpen: 1
+  petName: 
+  petDamage: 
 --- !u!1 &1272136656
 GameObject:
   m_ObjectHideFlags: 0
