@@ -73,6 +73,9 @@ public static class StaticManagement
         PetSlotData openSlot = null;
         foreach (PetSlotData petSlot in petSlotsRef)
         {
+            // Pet already collected, don't collect again.
+            if (petSlot.petName == enemyRef.gameObject.name) { break; }
+
             // Sets openSlot, ends loop.
             if (petSlot.slotOpen) 
             {
