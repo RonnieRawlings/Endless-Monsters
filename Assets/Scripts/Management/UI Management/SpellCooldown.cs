@@ -6,11 +6,13 @@ using System.Collections;
 
 public class SpellCooldown : MonoBehaviour
 {
+    /// <summary> method <c>StartCooldown</c> Allows a button to begin the SpellCooldowns coroutine. </summary>
     public void StartCooldown(BaseMagic spellData)
     {
         StartCoroutine(SpellCooldowns(spellData));
     }
 
+    /// <summary> interface <c>SpellCooldowns</c> deals with the cooldown of spells, visually displays them using a slider. </summary>
     public IEnumerator SpellCooldowns(BaseMagic spellData)
     {
         // Disables use of spell.
