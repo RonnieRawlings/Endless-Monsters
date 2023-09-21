@@ -19,6 +19,9 @@ public class PetSlotData : MonoBehaviour
     // Collected int pet info, damage etc.
     public int petDamage;
 
+    // Boolean, true if pet is active/deployed.
+    public bool petDeployed;
+
     /// <summary> method <c>SetData</c> takes info from enemy, uses it for collected pet data. </summary>
     public void SetData(Sprite sprite, Color spriteColour, string petName, int petDamage)
     {
