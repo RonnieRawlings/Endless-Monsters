@@ -21,6 +21,9 @@ public static class StaticManagement
     // Player options ref.
     public static GameObject playerOptionsRef;
 
+    // Active pet slots.
+    public static List<GameObject> activePetSlots;
+
     // Pet collection slots ref.
     public static PetSlotData[] petSlotsRef;
 

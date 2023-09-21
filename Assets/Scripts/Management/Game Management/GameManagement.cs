@@ -40,6 +40,13 @@ public class GameManagement : MonoBehaviour
 
         // Convert list, assign to array ref.
         StaticManagement.petSlotsRef = slotData.ToArray();
+
+        // Fills list with all active pet slots.
+        StaticManagement.activePetSlots = new List<GameObject>();
+        foreach (Transform activeSlot in transform.Find("ActivePets"))
+        {
+            StaticManagement.activePetSlots.Add(activeSlot.gameObject);
+        }       
     }
 
     // Update is called once per frame
