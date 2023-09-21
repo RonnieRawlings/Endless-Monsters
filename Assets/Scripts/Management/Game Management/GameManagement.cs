@@ -13,9 +13,11 @@ public class GameManagement : MonoBehaviour
     public void SetStaticRefs()
     {
         // Enables player/enemy sprites
+
+        transform.Find("ActivePets").gameObject.SetActive(true);
         transform.Find("Player").gameObject.SetActive(true);
         transform.Find("BaseEnemy").gameObject.SetActive(true);
-
+        
         // Sets refs in static management, easier access.
         StaticManagement.playerRef = transform.Find("Player").gameObject;
         StaticManagement.enemyRef = transform.Find("BaseEnemy").gameObject;
@@ -29,7 +31,11 @@ public class GameManagement : MonoBehaviour
         List<PetSlotData> slotData = new List<PetSlotData>();
         foreach (Transform petShadow in petCollection.transform)
         {
-            slotData.Add(petShadow.GetComponent<PetSlotData>());
+            // Prevents first child from being selected.
+            if (petShadow.name != "Title")
+            {
+                slotData.Add(petShadow.GetComponent<PetSlotData>());
+            }           
         }
 
         // Convert list, assign to array ref.
