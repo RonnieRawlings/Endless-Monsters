@@ -12,11 +12,11 @@ public class PetInfoBox : MonoBehaviour
     public void SetBoxData(PetSlotData petData)
     {
         // Data is displayed/removed depending current data.
-        if (transform.GetChild(1).GetComponent<TextMeshProUGUI>().text == "Name - " + petData.petName)
+        if (transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text == petData.petName)
         {
             // Removes displayed data.
-            transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Name - ";
-            transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "DPS - ";
+            transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+            transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
 
             // Disables pet deploy button.
             transform.GetComponentInChildren<Button>(true).gameObject.SetActive(false);
@@ -24,8 +24,8 @@ public class PetInfoBox : MonoBehaviour
         else
         {
             // Sets name & damage info.
-            transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Name - " + petData.petName;
-            transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "DPS - " + petData.petDamage.ToString();
+            transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = petData.petName;
+            transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = petData.petDamage.ToString();
 
             // Enables pet deploy button.
             transform.GetComponentInChildren<Button>(true).gameObject.SetActive(true);
@@ -33,11 +33,11 @@ public class PetInfoBox : MonoBehaviour
             // Checks if pet is already deployed.
             if (petData.petDeployed)
             {
-                transform.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "RECALL";
+                transform.GetComponentsInChildren<TextMeshProUGUI>()[5].text = "RECALL";
             }
             else
             {
-                transform.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "DEPLOY";
+                transform.GetComponentsInChildren<TextMeshProUGUI>()[5].text = "DEPLOY";
             }
         }       
     }
@@ -49,7 +49,7 @@ public class PetInfoBox : MonoBehaviour
         PetSlotData petToMakeActive = null;
         foreach (PetSlotData pet in StaticManagement.petSlotsRef)
         {
-            if (pet.petName == transform.GetChild(1).GetComponent<TextMeshProUGUI>().text.Split("Name - ")[1])
+            if (pet.petName == transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text)
             {
                 petToMakeActive = pet;
             }
@@ -60,7 +60,7 @@ public class PetInfoBox : MonoBehaviour
         {
             // Returns the pet from battle.
             RecallPet(petToMakeActive);
-            transform.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "DEPLOY";
+            transform.GetComponentsInChildren<TextMeshProUGUI>()[5].text = "DEPLOY";
             petToMakeActive.petDeployed = false;
 
             // Prevents uneeded execution.
@@ -87,7 +87,7 @@ public class PetInfoBox : MonoBehaviour
         openSlot.GetComponent<Image>().color = petToMakeActive.GetComponent<Image>().color;
 
         // Pet is set to deployed.
-        transform.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "RECALL";
+        transform.GetComponentsInChildren<TextMeshProUGUI>()[5].text = "RECALL";
         petToMakeActive.petDeployed = true;
     }
 

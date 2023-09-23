@@ -48,7 +48,7 @@ public static class StaticManagement
         // Wait specified time before changing enemies.
         yield return new WaitForSeconds(waitTime);
 
-        // Captures enemy is an open slot is available.
+        // Captures enemy if an open slot is available.
         if (enemyRef.name != "BaseEnemy") { CheckForOpenPetSlot(); }
 
         // Get a random index from lowLevelEnemies array
@@ -64,6 +64,7 @@ public static class StaticManagement
 
         // Instantiate a new low level enemy at the position and rotation of the old enemy
         enemyRef = GameObject.Instantiate(lowLevelEnemies[randomIndex], position, rotation);
+        enemyRef.name = enemyRef.name.Split("(Clone)")[0];
 
         // Set the parent of the new enemy to be the same as the old enemy
         enemyRef.transform.SetParent(parent);
