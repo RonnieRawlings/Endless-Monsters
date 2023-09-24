@@ -1306,6 +1306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349494779}
+  - component: {fileID: 349494780}
   m_Layer: 5
   m_Name: ActivePets
   m_TagString: Untagged
@@ -1336,6 +1337,18 @@ RectTransform:
   m_AnchoredPosition: {x: -826, y: 127.79}
   m_SizeDelta: {x: 100, y: 449.5851}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &349494780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349494778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676fa5edafb7eed4e9f8a46c665ca9a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &360430281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,6 +2709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619fcd03ee2f4b149a1ff6163e1f297e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idlePetsScript: {fileID: 349494780}
 --- !u!1 &649170942
 GameObject:
   m_ObjectHideFlags: 0

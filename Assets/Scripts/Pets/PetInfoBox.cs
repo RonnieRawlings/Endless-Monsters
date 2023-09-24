@@ -2,12 +2,16 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PetInfoBox : MonoBehaviour
 {
+    // Reference to active pets idle script.
+    [SerializeField] private IdlePets idlePetsScript;
+
     /// <summary> method <c>SetBoxData</c> displays clicked pets info in info box. </summary>
     public void SetBoxData(PetSlotData petData)
     {
@@ -82,6 +86,11 @@ public class PetInfoBox : MonoBehaviour
         // Prevents full pet slot errors.
         if (openSlot == null) { return; }
 
+        // Increases idlePet damage.
+        idlePetsScript.IdleDamage += petToMakeActive.petDamage;
+
+        Debug.Log(idlePetsScript.IdleDamage);
+
         // Sets sprite & colour settings.
         openSlot.GetComponent<Image>().sprite = petToMakeActive.GetComponent<Image>().sprite;
         openSlot.GetComponent<Image>().color = petToMakeActive.GetComponent<Image>().color;
@@ -105,6 +114,11 @@ public class PetInfoBox : MonoBehaviour
                 break;
             }
         }
+
+        // Removes damage from idlePets.
+        idlePetsScript.IdleDamage -= activePet.petDamage;
+
+        Debug.Log(idlePetsScript.IdleDamage);
 
         // Recall the pet from the active slot.
         activePetSlot.GetComponent<Image>().sprite = null;
