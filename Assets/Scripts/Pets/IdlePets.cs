@@ -26,6 +26,32 @@ public class IdlePets : MonoBehaviour
     /// <summary> interface <c>IdlePetBattling</c> deals combined damage of ALL active pets to enemy every 1.5secs. </summary>
     public IEnumerator IdlePetBattling()
     {
-        yield return new WaitForSeconds(waitTime);
+        // Loops until enemy is defeated.
+        while (true && idleDamage > 0)
+        {
+            // Waits set time between attacks.
+            yield return new WaitForSeconds(waitTime);
+
+            // Deals damage to enemy, displays it visually.
+            StaticManagement.enemyRef.GetComponent<EnemyData>().enemyHealth -= idleDamage;
+            DamageNumbers.DisplayDamageNumbers(StaticManagement.enemyRef.transform, idleDamage);
+
+            // Check if either player or enemy health is 0 or below
+            if (StaticManagement.enemyRef.GetComponent<EnemyData>().enemyHealth <= 0)
+            {
+                // Exit loop on enemy death.
+                break;
+            }
+        }
+
+        // Wait for enemy spawn + restart coroutine.
+        yield return new WaitForSeconds(0.6f);
+        StartCoroutine(IdlePetBattling());
+    }
+
+    void OnEnable()
+    {
+        // Deals idle damage for active pets.
+        StartCoroutine(IdlePetBattling());
     }
 }
