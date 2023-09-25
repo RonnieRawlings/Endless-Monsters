@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MoveDamageNums : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class MoveDamageNums : MonoBehaviour
 
             // Moves obj, t * t = quadratic curve.
             transform.position = Vector3.Lerp(startPosition, startPosition + finalPos, t * t);
+
+            // Fade out over time.
+            Color color = GetComponent<TextMeshProUGUI>().color;
+            color.a = Mathf.Lerp(1, 0, t);
+            GetComponent<TextMeshProUGUI>().color = color;
 
             // Satisfies return req, waits no time.
             yield return null;
